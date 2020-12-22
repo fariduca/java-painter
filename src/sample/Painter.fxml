@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.PainterController">
+   <left>
+      <VBox spacing="8.0" BorderPane.alignment="CENTER">
+         <children>
+            <TitledPane text="Color Chooser">
+               <content>
+                  <GridPane hgap="8.0" vgap="4.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="50.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="Red" />
+                        <Label text="Green" GridPane.rowIndex="1" />
+                        <Label text="Bule" GridPane.rowIndex="2" />
+                        <Label text="Alpha" GridPane.rowIndex="3" />
+                        <TextField fx:id="redTextField" GridPane.columnIndex="2" />
+                        <TextField fx:id="greenTextField" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <TextField fx:id="blueTextField" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <TextField fx:id="alphaTextField" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                        <Slider fx:id="redSlider" blockIncrement="5.0" max="255.0" value="125.0" GridPane.columnIndex="1" />
+                        <Slider fx:id="greenSlider" blockIncrement="5.0" max="255.0" value="125.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Slider fx:id="blueSlider" blockIncrement="5.0" max="255.0" value="125.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Slider fx:id="alphaSlider" blockIncrement="0.1" max="1.0" value="1.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                     </children>
+                     <padding>
+                        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                     </padding>
+                  </GridPane>
+               </content>
+            </TitledPane>
+            <TitledPane animated="false" text="Pen Size">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0">
+                     <children>
+                        <VBox layoutX="-1.0" layoutY="-1.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="8.0">
+                           <children>
+                              <RadioButton fx:id="smallRadioButton" mnemonicParsing="false" onAction="#sizeRadioButtonSelected" text="Small">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="sizeToggleGroup" />
+                                 </toggleGroup>
+                              </RadioButton>
+                              <RadioButton fx:id="mediumRadioButton" mnemonicParsing="false" onAction="#sizeRadioButtonSelected" text="Medium" toggleGroup="$sizeToggleGroup" />
+                              <RadioButton fx:id="largeRadioButton" mnemonicParsing="false" onAction="#sizeRadioButtonSelected" text="Large" toggleGroup="$sizeToggleGroup" />
+                           </children>
+                           <padding>
+                              <Insets left="14.0" right="14.0" top="14.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </TitledPane>
+            <Button fx:id="undoButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#undoButtonPressed" text="Undo" />
+            <Button fx:id="clearButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#clearButtonPressed" text="Clear" />
+         </children>
+      </VBox>
+   </left>
+   <center>
+      <Pane fx:id="drawingAreaPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseDragged="#drawingAreaMouseDragged" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets left="8.0" />
+         </BorderPane.margin>
+      </Pane>
+   </center>
+   <padding>
+      <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+   </padding>
+</BorderPane>
